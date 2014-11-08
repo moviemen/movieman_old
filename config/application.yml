@@ -1,0 +1,17 @@
+# config/application.yml
+defaults: &defaults
+  notifications:
+    - email
+    - vkontakte
+    - facebook
+    - twitter
+    - sms
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -3,7 +3,9 @@ class NotificationWorker
   include Sidekiq::Worker
 
   def perform episode_id
-    users = Episode.find(episode_id).users.pluck(:email)
-    puts "Episode subscribers: #{users.to_s}"
+    binding.pry
+    Settings.notifications.each do |notification|
+      "#{notification.capitalize}Service".constantize.notify episode_id
+    end
   end
 end

@@ -2,10 +2,10 @@
 defaults: &defaults
   notifications:
     - email
-    - vkontakte
-    - facebook
-    - twitter
-    - sms
+#    - vkontakte
+#    - facebook
+#    - twitter
+#    - sms
 
 development:
   <<: *defaults

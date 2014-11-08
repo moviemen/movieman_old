@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 gem 'sidekiq'
 gem 'settingslogic'
 gem 'slim-rails'
+gem 'mechanize'
 
 group :production do
   gem 'pg'

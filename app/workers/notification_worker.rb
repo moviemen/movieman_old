@@ -2,7 +2,8 @@
 class NotificationWorker
   include Sidekiq::Worker
 
-  def perform message
-    puts "Hi, I am a notification: #{message}"
+  def perform episode_id
+    users = Episode.find(episode_id).users.pluck(:email)
+    puts "Episode subscribers: #{users.to_s}"
   end
 end

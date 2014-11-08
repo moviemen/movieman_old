@@ -44,6 +44,7 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec', '2.14.1'
   gem 'rspec-rails', '2.14.1'
+  gem 'pry'
 end
 
 group :doc do

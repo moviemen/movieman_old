@@ -6,6 +6,9 @@ defaults: &defaults
 #    - facebook
 #    - twitter
 #    - sms
+  strategies:
+    - fs
+#    - ex
 
 development:
   <<: *defaults

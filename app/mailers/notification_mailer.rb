@@ -4,8 +4,7 @@ class NotificationMailer < ActionMailer::Base
 
   def new_episode_added episode_id, user_email
     @episode = Episode.find episode_id
-    mail(to: user_email, subject: 'movieman email subject')
+    mail(to: user_email, subject: 'MovieMan notification')
   end
-
 
 end

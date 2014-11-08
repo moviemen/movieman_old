@@ -1,6 +1,7 @@
-# app/workers/hard_worker.rb
 class NotificationWorker
   include Sidekiq::Worker
+  
+  sidekiq_options queue: 'notifications', retry: true
 
   def perform episode_id
     Settings.notifications.each do |notification|

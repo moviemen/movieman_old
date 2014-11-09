@@ -42,7 +42,18 @@ gem 'sidekiq_mailer'
 gem 'whenever', require: false
 gem 'settingslogic'
 gem 'mechanize'
-gem 'slim-rails'
+
+gem 'haml-rails'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+gem 'bootstrap_form'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 
 group :production do
   gem 'pg'

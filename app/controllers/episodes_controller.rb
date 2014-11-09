@@ -3,8 +3,9 @@ class EpisodesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes
+    @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes.order('id ASC')
     @episodes =@episodes.paginate(:page => params[:page],per_page: 15)
+
     respond_with(@episodes)
   end
 
@@ -42,7 +43,11 @@ class EpisodesController < ApplicationController
 
   def subscribe
     @episode = Episode.find(params[:episode_id])
+<<<<<<< HEAD
     current_user.episodes << @episode
+=======
+    current_user.episodes << @episodes
+>>>>>>> 561e4f84b8b27a525a6adf52cf20a0a620ad5a35
     flash[:notice] = "You have subscribed to the #{@episode.name} serial"
     redirect_to episodes_path
   end

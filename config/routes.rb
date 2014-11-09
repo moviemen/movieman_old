@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   mount UserApi::API  => '/api/user'
 
   devise_for :users
-  resources  :episodes
+  resources  :episodes do
+    collection do
+      get 'search', as: :get_episode_search
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

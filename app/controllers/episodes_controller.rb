@@ -1,10 +1,9 @@
 class EpisodesController < ApplicationController
   before_action :set_episode, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+  respond_to :html, :json
 
   def index
-    @episodes = Episode.all
+    @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes
     respond_with(@episodes)
   end
 
@@ -32,8 +31,13 @@ class EpisodesController < ApplicationController
   end
 
   def destroy
-    @episode.destroy
-    respond_with(@episode)
+    current_user.episodes.delete @episode
+    #@episode.destroy
+    redirect_to episodes_path
+  end
+
+  def search
+    redirect_to episodes_path(:search => params[:search])
   end
 
   private

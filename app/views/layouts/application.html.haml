@@ -27,24 +27,26 @@
           %span.icon-bar
         %a.navbar-brand(href="#") Movieman
         .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
+          - if user_signed_in?
+            %ul.nav.navbar-nav
+              %li= link_to "Link 1", "/path1"
+              %li= link_to "Link 2", "/path2"
+              %li= link_to "Link 3", "/path3"
+              %li= link_to "Link 3", "/path3"
+              %li
+                %form.navbar-form.navbar-left{action: "/episodes/search",method: :get,:role => "search"}
+                  .form-group
+                    %input.form-control{:placeholder => "Search", :type => "text", :name => "search"}/
+                    %button.btn.btn-default{:type => "submit"} Submit
+            %ul.nav.navbar-nav.navbar-right
+              %li= link_to current_user.email, "#"
+              %li= link_to '<span class="glyphicon glyphicon-edit"></i>'.html_safe, edit_user_registration_path, :class => 'navbar-link'
+              %li= link_to '<span class="glyphicon glyphicon-log-out"></i>'.html_safe, destroy_user_session_path, method: :delete, :class => 'no_ajaxify navbar-link'
+
 
     .container
       .row
         .col-lg-9
           = bootstrap_flash
           = yield
-        .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-      %footer
-        %p &copy; Company 2014
+        

@@ -36,8 +36,8 @@
               %li
                 %form.navbar-form.navbar-left{action: "/episodes/search",method: :get,:role => "search"}
                   .form-group
-                    %input.form-control{:placeholder => "Search", :type => "text", :name => "search"}/
-                    %button.btn.btn-default{:type => "submit"} Submit
+                    %input.form-control{placeholder: 'Search', type: 'text', name: 'search', class: 'input input-sm'}/
+                    %button.btn.btn-default{:type => "submit", class: 'btn btn-sm'} search
             %ul.nav.navbar-nav.navbar-right
               %li= link_to current_user.email, "#"
               %li= link_to '<span class="glyphicon glyphicon-edit"></i>'.html_safe, edit_user_registration_path, :class => 'navbar-link'

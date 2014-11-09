@@ -3,7 +3,7 @@ class EpisodesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes
+    @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes.order('id ASC')
     respond_with(@episodes)
   end
 

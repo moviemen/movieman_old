@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount MovieApi::API  => '/api'
   mount UserApi::API  => '/api/user'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   get 'subscribes', to: 'episodes#subscribes', as: :subscribes
 

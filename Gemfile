@@ -53,9 +53,7 @@ gem 'bootstrap_form'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'omniauth-vkontakte'
+gem 'omniauth-facebook' 
 
 group :production do
   gem 'pg'

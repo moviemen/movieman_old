@@ -4,6 +4,7 @@ class EpisodesController < ApplicationController
 
   def index
     @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes
+    @episodes =@episodes.paginate(:page => params[:page],per_page: 15)
     respond_with(@episodes)
   end
 
@@ -40,8 +41,8 @@ class EpisodesController < ApplicationController
   end
 
   def subscribe
-    @episode = Episode.find(params[:episode_id]
-    current_user.episodes << @episodes
+    @episode = Episode.find(params[:episode_id])
+    current_user.episodes << @episode
     flash[:notice] = "You have subscribed to the #{@episode.name} serial"
     redirect_to episodes_path
   end

@@ -6,19 +6,23 @@
       %th season
       %th episode
       %th released at
-      %th unsubscribe
+      %th subscribe
   %tbody
     - @episodes.each do |episode|
       %tr
-        %td= link_to episode.name, episode_path(episode)
+        %td= episode.name
         %td= episode.last_season
         %td= episode.last_episode
         %td= episode.updated_at.to_datetime.strftime "%d.%m.%Y %I:%M %p"
         %td
-          /= link_to t('.edit', :default => t("helpers.links.edit")), edit_episode_path(episode), :class => 'btn btn-default btn-xs'
-
-          = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode)
-          = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode)
+          .btn-group.btn-group-xs
+            - if current_user.episodes.include? episode
+              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs', disabled: true
+              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-primary', disabled: false
+            - else  
+              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-primary', disabled: false
+              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs', disabled: true
+            
 
 %center
   = will_paginate @episodes, :renderer => BootstrapPagination::Rails

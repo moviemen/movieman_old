@@ -29,15 +29,13 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           - if user_signed_in?
             %ul.nav.navbar-nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "TV series", "/"
+              /%li= link_to "Subscribes", "/subscribes"
               %li
-                %form.navbar-form.navbar-left{action: "/episodes/search",method: :get,:role => "search"}
-                  .form-group
-                    %input.form-control{placeholder: 'search series', type: 'text', name: 'search', class: 'input input-sm'}/
-                    %button.btn.btn-default{:type => "submit", class: 'btn btn-sm'} search
+            %form.navbar-form.navbar-left{action: "/episodes/search",method: :get, role: "search"}
+              .form-group
+                %input.form-control.input.input-sm{placeholder: 'search series', type: 'text', name: 'search'}/
+              %button.btn.btn-sm.btn-default{type: "submit"} search              
             %ul.nav.navbar-nav.navbar-right
               %li= link_to current_user.email, "#"
               %li= link_to '<span class="glyphicon glyphicon-edit"></i>'.html_safe, edit_user_registration_path, :class => 'navbar-link'

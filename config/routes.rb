@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   mount UserApi::API  => '/api/user'
 
   devise_for :users
+
+  get 'subscribes', to: 'episodes#subscribes', as: :subscribes
+
   resources  :episodes do
     get 'subscribe',   as: :subscribe
     get 'unsubscribe', as: :unsubscribe
     collection do
-      get 'search',      as: :get_episode_search
+      get 'search',     as: :get_episode_search
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -3,11 +3,18 @@ class EpisodesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes.order('id ASC')
+    @episodes = params[:search] ? Episode.where(name: params[:search]) : Episode.order('id ASC')
     @episodes =@episodes.paginate(:page => params[:page],per_page: 15)
 
     respond_with(@episodes)
   end
+
+  #def subscribes
+  #  @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes.order('id ASC')
+  #  @episodes =@episodes.paginate(:page => params[:page],per_page: 15)
+  #
+  #  respond_with(@episodes) 
+  #end
 
   def show
     respond_with(@episode)

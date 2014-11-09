@@ -16,7 +16,11 @@
         %td= episode.updated_at.to_datetime.strftime "%d.%m.%Y %I:%M %p"
         %td
           /= link_to t('.edit', :default => t("helpers.links.edit")), edit_episode_path(episode), :class => 'btn btn-default btn-xs'
+
           = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode)
           = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode)
+
+    = will_paginate @episodes, :renderer => BootstrapPagination::Rails
+
 
 /= link_to t('.new', :default => t("helpers.links.new")), new_episode_path, :class => 'btn btn-primary'

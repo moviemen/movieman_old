@@ -4,6 +4,8 @@ class EpisodesController < ApplicationController
 
   def index
     @episodes = params[:search] ? Episode.where(name: params[:search]) : current_user.episodes.order('id ASC')
+    @episodes =@episodes.paginate(:page => params[:page],per_page: 15)
+
     respond_with(@episodes)
   end
 

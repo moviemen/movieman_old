@@ -8,6 +8,6 @@ class NotificationWorker
     Settings.notifications.each do |notification|
       "#{notification.capitalize}Service".constantize.notify episode_id
     end
-  end
 =end
+  end
 end

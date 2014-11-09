@@ -61,7 +61,7 @@ class FsStrategy
       end
     else
       parsed_episode.save!
-      puts "CREATE new series #{episode.name}"
+      puts "CREATE new series #{parsed_episode.name}"
     end
   end
 

@@ -27,10 +27,10 @@
           %span.icon-bar
         %a.navbar-brand(href="/") MovieMan 
         .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to 'All series', "/"
-            %li= link_to 'My series', "/subscribes"
           - if user_signed_in?
+            %ul.nav.navbar-nav
+              %li= link_to 'All series', "/"
+              %li= link_to 'My series', "/subscribes"
             %form.navbar-form.navbar-left{action: "/episodes/search",method: :get, role: "search"}
               .form-group
                 %input.form-control.input.input-sm{placeholder: 'search for series', type: 'text', name: 'search', style: 'width: 250px;'}/
@@ -39,6 +39,10 @@
               %li= link_to current_user.email, "#"
               %li= link_to '<span class="glyphicon glyphicon-edit"></i>'.html_safe, edit_user_registration_path, :class => 'navbar-link'
               %li= link_to '<span class="glyphicon glyphicon-log-out"></i>'.html_safe, destroy_user_session_path, method: :delete, :class => 'no_ajaxify navbar-link'
+          - else
+            %ul.nav.navbar-nav.navbar-right
+              %li= link_to 'Sign up &nbsp;'.html_safe, new_user_registration_path, :class => 'navbar-link'
+              %li= link_to 'Log in &nbsp;'.html_safe, new_user_session_path, :class => 'navbar-link'
 
 
     .container

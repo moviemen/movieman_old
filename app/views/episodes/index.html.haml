@@ -1,27 +1,31 @@
-- model_class = Episode
-%table.table.table-striped
-  %thead
-    %tr
-      %th TV Series
-      %th season
-      %th episode
-      %th released at
-      %th subscribe
-  %tbody
-    - @episodes.each do |episode|
+- if current_user
+  - model_class = Episode
+  %table.table.table-striped
+    %thead
       %tr
-        %td= link_to episode.name, episode.url
-        %td= episode.last_season
-        %td= episode.last_episode
-        %td= episode.updated_at.to_datetime.strftime "%d.%m.%Y %I:%M %p"
-        %td
-          .btn-group.btn-group-xs
-            - if current_user.episodes.include? episode
-              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-primary', disabled: true
-              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-info', disabled: false
-            - else  
-              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-info', disabled: false
-              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-primary', disabled: true
-            
-%center
-  = will_paginate @episodes, :renderer => BootstrapPagination::Rails
+        %th TV Series
+        %th season
+        %th episode
+        %th released at
+        %th subscribe
+    %tbody
+      - @episodes.each do |episode|
+        %tr
+          %td= link_to episode.name, episode.url
+          %td= episode.last_season
+          %td= episode.last_episode
+          %td= episode.updated_at.to_datetime.strftime "%d.%m.%Y %I:%M %p"
+          %td
+            .btn-group.btn-group-xs
+              - if current_user.episodes.include? episode
+                = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-primary', disabled: true
+                = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-info', disabled: false
+              - else
+                = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-info', disabled: false
+                = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-primary', disabled: true
+
+  %center
+    = will_paginate @episodes, :renderer => BootstrapPagination::Rails
+- else
+  .text-center
+    =  image_tag 'landing.png', width: '850', height: '540'

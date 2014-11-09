@@ -41,14 +41,15 @@ class EpisodesController < ApplicationController
 
   def subscribe
     @episode = Episode.find(params[:episode_id])
-    current_user.episodes << @episodes
+    current_user.episodes << @episode
     flash[:notice] = "You have subscribed to the #{@episode.name} serial"
     redirect_to episodes_path
   end
 
   def unsubscribe
+    @episode = Episode.find(params[:episode_id])
     current_user.episodes.delete @episode
-    flash[:notice] = "You have unsubscribed to the #{@episode.name} serial"
+    flash[:notice] = "You have unsubscribed from the #{@episode.name} serial"
     redirect_to episodes_path
   end
 

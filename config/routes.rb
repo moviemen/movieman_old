@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources  :episodes do
+    get 'subscribe',   as: :subscribe
+    get 'unsubscribe', as: :unsubscribe
     collection do
-      get 'subscribe', as: :subscribe
-      get 'unsubscribe', as: :unsubscribe
-      get 'search', as: :get_episode_search
+      get 'search',      as: :get_episode_search
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

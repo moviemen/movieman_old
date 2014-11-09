@@ -20,7 +20,5 @@
           = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode)
           = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode)
 
-    = will_paginate @episodes, :renderer => BootstrapPagination::Rails
-
-
-/= link_to t('.new', :default => t("helpers.links.new")), new_episode_path, :class => 'btn btn-primary'
+%center
+  = will_paginate @episodes, :renderer => BootstrapPagination::Rails

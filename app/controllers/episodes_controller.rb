@@ -40,7 +40,7 @@ class EpisodesController < ApplicationController
   end
 
   def subscribe
-    @episode = Episode.find(params[:episode_id]
+    @episode = Episode.find(params[:episode_id])
     current_user.episodes << @episodes
     flash[:notice] = "You have subscribed to the #{@episode.name} serial"
     redirect_to episodes_path

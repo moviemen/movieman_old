@@ -17,12 +17,11 @@
         %td
           .btn-group.btn-group-xs
             - if current_user.episodes.include? episode
-              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs', disabled: true
-              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-primary', disabled: false
+              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-primary', disabled: true
+              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-info', disabled: false
             - else  
-              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-primary', disabled: false
-              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs', disabled: true
+              = link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, episode_subscribe_path(episode),    class: 'btn btn-xs btn-info', disabled: false
+              = link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, episode_unsubscribe_path(episode), class: 'btn btn-xs btn-primary', disabled: true
             
-
 %center
   = will_paginate @episodes, :renderer => BootstrapPagination::Rails

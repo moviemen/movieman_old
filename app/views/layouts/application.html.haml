@@ -25,16 +25,12 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand(href="/") MovieMan
+        %a.navbar-brand(href="/") MovieMan 
         .navbar-collapse.collapse.navbar-responsive-collapse
           - if user_signed_in?
-            %ul.nav.navbar-nav
-              %li= link_to "TV series", "/"
-              /%li= link_to "Subscribes", "/subscribes"
-              %li
             %form.navbar-form.navbar-left{action: "/episodes/search",method: :get, role: "search"}
               .form-group
-                %input.form-control.input.input-sm{placeholder: 'search series', type: 'text', name: 'search'}/
+                %input.form-control.input.input-sm{placeholder: 'search for series', type: 'text', name: 'search', style: 'width: 250px;'}/
               %button.btn.btn-sm.btn-default{type: "submit"} search              
             %ul.nav.navbar-nav.navbar-right
               %li= link_to current_user.email, "#"

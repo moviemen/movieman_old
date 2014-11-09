@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: sqlite3
-  pool: 5
+  pool: 10
   timeout: 5000
 
 development:
@@ -24,7 +24,7 @@ production:
   adapter: postgresql
   encoding: utf8
   database: movieman_production
-  pool: 5
+  pool: 10
   timeout: 5000
   username: postgres
   password: 

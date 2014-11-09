@@ -6,7 +6,8 @@ class Episode < ActiveRecord::Base
   private
 
   def email_on_updates
-    NotificationWorker.perform_async self.id
+    EmailService.notify self.id
+    #NotificationWorker.perform_async self.id
   end
 
 end

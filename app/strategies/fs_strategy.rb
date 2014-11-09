@@ -47,28 +47,22 @@ class FsStrategy
     if episode
       if episode.last_season.nil? || episode.last_episode.nil?
         episode.update(last_season: parsed_episode.last_season, last_episode: parsed_episode.last_episode)
-        line_print 'U'
+        puts "UPDATES FOR #{episode.name} - new episode #{parsed_episode.last_episode}"
       else      
         if parsed_episode.last_season == episode.last_season && parsed_episode.last_episode > episode.last_episode
           episode.update(last_season: parsed_episode.last_season, last_episode: parsed_episode.last_episode)
-          line_print 'U'
-          #puts "\nUPDATES FOR #{episode.name} - new episode #{parsed_episode.last_episode}"
+          puts "UPDATES FOR #{episode.name} - new episode #{parsed_episode.last_episode}"
         elsif parsed_episode.last_season > episode.last_season
           episode.update(last_season: parsed_episode.last_season, last_episode: parsed_episode.last_episode)
-          line_print 'U'          
+          puts "UPDATES FOR #{episode.name} - new episode #{parsed_episode.last_episode}"
         else
-          line_print '.'
+          puts "NO CHANGES FOR #{episode.name}"
         end
       end
     else
       parsed_episode.save!
-      line_print 'N'
+      puts "CREATE new series #{episode.name}"
     end
-  end
-
-  def line_print str
-    print str
-    $stdout.flush      
   end
 
 end

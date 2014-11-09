@@ -38,6 +38,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'grape'
 gem 'sidekiq'
+gem 'sidekiq_mailer'
 gem 'whenever', require: false
 gem 'settingslogic'
 gem 'mechanize'

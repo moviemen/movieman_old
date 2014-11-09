@@ -35,6 +35,22 @@ GEM
     bcrypt (3.1.9)
     bootstrap_form (2.2.0)
     builder (3.2.2)
+    capistrano (3.2.1)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.3)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.1.2)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+    capistrano-sidekiq (0.3.8)
+      capistrano
+      sidekiq
     celluloid (0.16.0)
       timers (~> 4.0.0)
     chronic (0.10.2)
@@ -48,6 +64,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colorize (0.7.3)
     commonjs (0.2.7)
     connection_pool (2.0.0)
     descendants_tracker (0.0.4)
@@ -72,6 +89,8 @@ GEM
       json-schema (~> 1.1)
       kramdown
       thor
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     grape (0.9.0)
       activesupport
       builder
@@ -132,6 +151,9 @@ GEM
     multipart-post (2.0.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     ntlm-http (0.1.1)
@@ -250,6 +272,10 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.10)
+    sshkit (1.5.1)
+      colorize
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -292,9 +318,13 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap_form
+  capistrano-rails
+  capistrano-rvm
+  capistrano-sidekiq
   coffee-rails (~> 4.0.0)
   devise
   fdoc
+  font-awesome-rails
   grape
   haml-rails
   jbuilder (~> 2.0)

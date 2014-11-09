@@ -56,16 +56,21 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'pg'
 end
+
 
 group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec', '2.14.1'
   gem 'rspec-rails', '2.14.1'
   gem 'pry'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
 end
 
 group :doc do

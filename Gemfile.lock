@@ -72,6 +72,8 @@ GEM
       json-schema (~> 1.1)
       kramdown
       thor
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     grape (0.9.0)
       activesupport
       builder
@@ -295,6 +297,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   fdoc
+  font-awesome-rails
   grape
   haml-rails
   jbuilder (~> 2.0)

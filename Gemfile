@@ -56,6 +56,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'pg'

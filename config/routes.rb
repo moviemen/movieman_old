@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources  :episodes do
     collection do
-      post 'subscribe', as: :subscribe
-      post 'unsubscribe', as: :unsubscribe
+      get 'subscribe', as: :subscribe
+      get 'unsubscribe', as: :unsubscribe
       get 'search', as: :get_episode_search
     end
   end

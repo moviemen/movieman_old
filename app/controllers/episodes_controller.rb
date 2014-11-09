@@ -31,13 +31,25 @@ class EpisodesController < ApplicationController
   end
 
   def destroy
-    current_user.episodes.delete @episode
-    #@episode.destroy
+    @episode.destroy
     redirect_to episodes_path
   end
 
   def search
     redirect_to episodes_path(:search => params[:search])
+  end
+
+  def subscribe
+    @episode = Episode.find(params[:episode_id]
+    current_user.episodes << @episodes
+    flash[:notice] = "You have subscribed to the #{@episode.name} serial"
+    redirect_to episodes_path
+  end
+
+  def unsubscribe
+    current_user.episodes.delete @episode
+    flash[:notice] = "You have unsubscribed to the #{@episode.name} serial"
+    redirect_to episodes_path
   end
 
   private
